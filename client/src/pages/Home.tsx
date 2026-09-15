@@ -162,12 +162,12 @@ export default function Home() {
             </div>
             <div className="contact-card">
               {submitted ? (
-                <div className="success-state"><div className="success-icon"><Check size={23} /></div><h3>You’re on the list.</h3><p>Thanks for reaching out. We’ll be in touch with the next Trading Tales update.</p></div>
+                <div className="success-state" role="status" aria-live="polite"><div className="success-icon" aria-hidden="true"><Check size={23} /></div><h3>Thanks — you’re on the list.</h3><p>Your email was submitted successfully. We’ll be in touch with the next Trading Tales update.</p></div>
               ) : (
                 <form onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}>
                   <label htmlFor="email">Your email address</label>
-                  <div className="form-row"><input id="email" type="email" required placeholder="you@company.com" /><button className="button button-green" type="submit">Join TTG <ArrowUpRight size={16} /></button></div>
-                  <small>We respect your inbox. No noise, only useful perspective.</small>
+                  <div className="form-row"><input id="email" name="email" type="email" inputMode="email" autoComplete="email" required placeholder="you@company.com" aria-describedby="newsletter-note" /><button className="button button-green" type="submit">Join TTG <ArrowUpRight size={16} /></button></div>
+                  <small id="newsletter-note">We respect your inbox. No noise, only useful perspective.</small>
                 </form>
               )}
             </div>

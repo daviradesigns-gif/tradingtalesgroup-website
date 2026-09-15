@@ -5,13 +5,13 @@ import {
   ArrowUpRight,
   Check,
   ChevronRight,
-  Instagram,
+  Facebook,
+  Music2,
   Menu,
   Play,
   Quote,
   Twitter,
   X,
-  Youtube,
 } from "lucide-react";
 
 const heroImage = "/manus-storage/ttg-hero-bg_124d897b.png";
@@ -179,7 +179,7 @@ export default function Home() {
         <div className="page-shell footer-top">
           <div className="footer-brand"><img src={logoImage} alt="Trading Tales Group" width="2048" height="976" fetchPriority="high" decoding="async" /><p>Process over promise.<br />Perspective over noise.</p></div>
           <div className="footer-links"><div><span>Explore</span><a href="#about">About TTG</a><a href="#offerings">What we do</a><a href="#values">Our values</a></div><div><span>Connect</span><a href="#contact">Contact us</a><a href="#contact">Join the community</a></div></div>
-          <div className="footer-social"><span>Follow the tales</span><div><a href="#contact" aria-label="Instagram"><Instagram size={18} /></a><a href="#contact" aria-label="Twitter"><Twitter size={18} /></a><a href="#contact" aria-label="YouTube"><Youtube size={18} /></a></div></div>
+          <div className="footer-social"><span>Follow the tales</span><div><a href="#contact" aria-label="Twitter"><Twitter size={18} /></a><a href="#contact" aria-label="Facebook"><Facebook size={18} /></a><a href="#contact" aria-label="TikTok"><Music2 size={18} /></a></div></div>
         </div>
         <div className="page-shell footer-bottom"><span>© 2026 Trading Tales Group. All rights reserved.</span><span>Built for the journey.</span></div>
       </footer>

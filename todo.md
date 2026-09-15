@@ -16,3 +16,10 @@
 - [x] Optimize image loading, CSS responsiveness, spacing, and typography across desktop, tablet, and mobile.
 - [x] Validate accessibility, production build output, and representative device previews.
 - [x] Save and deliver an updated project checkpoint.
+
+## Logo + Social Refinement
+
+- [x] Reduce the supplied logo to a standard website header and footer size.
+- [x] Replace Instagram and YouTube with Twitter, Facebook, and TikTok only.
+- [x] Verify responsive spacing and icon alignment on desktop and mobile.
+- [x] Save and deliver the revised checkpoint.

@@ -8,3 +8,11 @@
 - [x] Add accessible mobile menu behavior and visible focus states.
 - [x] Verify TypeScript/build output and capture representative desktop and mobile previews.
 - [x] Save a final project checkpoint and deliver the project version.
+
+## Responsive Optimization + Supplied Logo
+
+- [x] Copy and upload the supplied TTG logo for web use.
+- [x] Integrate the supplied logo into the header and footer with responsive sizing and contrast-safe treatment.
+- [x] Optimize image loading, CSS responsiveness, spacing, and typography across desktop, tablet, and mobile.
+- [x] Validate accessibility, production build output, and representative device previews.
+- [x] Save and deliver an updated project checkpoint.

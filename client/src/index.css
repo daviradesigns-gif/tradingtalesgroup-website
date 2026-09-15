@@ -25,7 +25,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .ttg-site { overflow: hidden; }
 .page-shell { width: min(1200px, calc(100% - 96px)); margin: 0 auto; }
 .site-header { position: absolute; z-index: 10; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; width: min(1200px, calc(100% - 96px)); margin: 0 auto; padding: 28px 0; color: white; }
-.brand-lockup img { display: block; width: 168px; height: 62px; object-fit: contain; object-position: left center; filter: brightness(0) invert(1); }
+.brand-lockup img { display: block; width: 240px; height: 114px; object-fit: contain; object-position: left center; filter: none; }
 .site-nav { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 600; letter-spacing: .02em; }
 .site-nav a { opacity: .8; transition: opacity .18s ease, color .18s ease; }
 .site-nav a:hover { opacity: 1; color: var(--ttg-green-bright); }
@@ -34,7 +34,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .menu-toggle { display: none; border: 0; background: transparent; color: white; padding: 8px; }
 
 .hero-section { position: relative; min-height: 780px; display: flex; align-items: center; color: white; background: var(--ttg-black); isolation: isolate; }
-.hero-backdrop { position: absolute; inset: 0; z-index: -3; background-size: cover; background-position: center; opacity: .78; }
+.hero-backdrop { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .78; }
 .hero-section::after { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(15,17,14,.96) 0%, rgba(15,17,14,.74) 38%, rgba(15,17,14,.12) 100%); }
 .hero-grain { position: absolute; inset: 0; z-index: -1; opacity: .12; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"); }
 .hero-content { padding-top: 88px; }
@@ -83,7 +83,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 .offering-row:hover .offering-arrow { color: var(--ttg-green); transform: translate(4px, -4px); }
 
 .community-section { position: relative; min-height: 680px; display: flex; align-items: center; isolation: isolate; color: white; background: var(--ttg-black); }
-.community-image { position: absolute; inset: 0; z-index: -2; background-position: center; background-size: cover; opacity: .46; filter: grayscale(.2) saturate(.75); }
+.community-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .46; filter: grayscale(.2) saturate(.75); }
 .community-overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(15,17,14,.98) 0%, rgba(15,17,14,.86) 49%, rgba(15,17,14,.58) 100%), repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 38px), repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 38px); }
 .community-content { padding-top: 35px; padding-bottom: 35px; }
 .community-content h2 { max-width: 650px; margin: 20px 0 28px; }
@@ -126,7 +126,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 
 .site-footer { background: #070806; color: white; }
 .footer-top { display: grid; grid-template-columns: 1.1fr .9fr .55fr; gap: 7%; padding-top: 77px; padding-bottom: 64px; }
-.footer-brand img { display: block; width: 150px; height: 58px; object-fit: contain; object-position: left center; filter: brightness(0) invert(1); }
+.footer-brand img { display: block; width: 224px; height: 108px; object-fit: contain; object-position: left center; filter: none; }
 .footer-brand p { margin: 24px 0 0; color: rgba(255,255,255,.55); font: 500 17px/1.2 'League Spartan'; letter-spacing: -.02em; }
 .footer-links { display: flex; gap: 78px; }
 .footer-links > div, .footer-social { display: flex; flex-direction: column; gap: 12px; }
@@ -138,10 +138,16 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 .footer-social a:hover { background: var(--ttg-green); border-color: var(--ttg-green); color: white; }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; padding-bottom: 24px; border-top: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.4); font-size: 10px; }
 
+@media (max-width: 1024px) {
+  .page-shell, .site-header { width: min(100% - 64px, 900px); }
+  .intro-grid, .manifesto-grid, .values-layout, .cta-grid { gap: 7%; }
+  .hero-content h1 { max-width: 650px; }
+}
+
 @media (max-width: 850px) {
   .page-shell, .site-header { width: min(100% - 44px, 680px); }
   .site-header { padding: 20px 0; }
-  .brand-lockup img { width: 145px; height: 53px; }
+  .brand-lockup img { width: 190px; height: 90px; }
   .menu-toggle { display: block; }
   .site-nav { position: absolute; top: 82px; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 9px; background: var(--ttg-black); border: 1px solid rgba(255,255,255,.14); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
   .site-nav.is-open { display: flex; }
@@ -160,6 +166,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
   .community-section { min-height: 650px; }
   .community-caption { display: none; }
   .cta-grid { padding-top: 88px; padding-bottom: 88px; gap: 45px; }
+  .footer-brand img { width: 198px; height: 96px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 45px 25px; }
   .footer-social { grid-column: 1 / -1; }
 }
@@ -167,6 +174,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 @media (max-width: 520px) {
   .page-shell, .site-header { width: calc(100% - 36px); }
   .hero-section { min-height: 680px; }
+  .brand-lockup img { width: 174px; height: 84px; }
   .hero-content { padding-top: 56px; }
   .hero-content h1 { font-size: 56px; }
   .hero-bottom p { max-width: 260px; font-size: 14px; }

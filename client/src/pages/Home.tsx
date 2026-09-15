@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 const heroImage = "/manus-storage/ttg-hero-bg_124d897b.png";
-const logoImage = "/manus-storage/ttg-logo_9fed5e28.png";
+const logoImage = "/manus-storage/ttg-logo-supplied_c878a093.webp";
 const communityImage = "/manus-storage/ttg-community-section_f378da59.png";
 
 const offerings = [
@@ -52,7 +52,7 @@ export default function Home() {
     <div className="ttg-site">
       <header className="site-header">
         <a className="brand-lockup" href="#top" aria-label="Trading Tales Group home" onClick={closeMenu}>
-          <img src={logoImage} alt="Trading Tales Group" />
+          <img src={logoImage} alt="Trading Tales Group" width="2048" height="976" fetchPriority="high" decoding="async" />
         </a>
         <nav className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
           <a href="#about" onClick={closeMenu}>About</a>
@@ -68,7 +68,7 @@ export default function Home() {
 
       <main id="top">
         <section className="hero-section">
-          <div className="hero-backdrop" style={{ backgroundImage: `url(${heroImage})` }} />
+          <img className="hero-backdrop" src={heroImage} alt="" width="1920" height="1080" fetchPriority="high" decoding="async" />
           <div className="hero-grain" />
           <div className="hero-content page-shell">
             <div className="eyebrow light"><span /> Trading Tales Group</div>
@@ -123,7 +123,7 @@ export default function Home() {
         </section>
 
         <section className="community-section">
-          <div className="community-image" style={{ backgroundImage: `url(${communityImage})` }} />
+          <img className="community-image" src={communityImage} alt="Traders learning and discussing market ideas together" width="1600" height="900" loading="lazy" decoding="async" />
           <div className="community-overlay" />
           <div className="page-shell community-content">
             <div className="section-kicker light">03 — The community</div>
@@ -177,7 +177,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="page-shell footer-top">
-          <div className="footer-brand"><img src={logoImage} alt="Trading Tales Group" /><p>Process over promise.<br />Perspective over noise.</p></div>
+          <div className="footer-brand"><img src={logoImage} alt="Trading Tales Group" width="2048" height="976" fetchPriority="high" decoding="async" /><p>Process over promise.<br />Perspective over noise.</p></div>
           <div className="footer-links"><div><span>Explore</span><a href="#about">About TTG</a><a href="#offerings">What we do</a><a href="#values">Our values</a></div><div><span>Connect</span><a href="#contact">Contact us</a><a href="#contact">Join the community</a></div></div>
           <div className="footer-social"><span>Follow the tales</span><div><a href="#contact" aria-label="Instagram"><Instagram size={18} /></a><a href="#contact" aria-label="Twitter"><Twitter size={18} /></a><a href="#contact" aria-label="YouTube"><Youtube size={18} /></a></div></div>
         </div>

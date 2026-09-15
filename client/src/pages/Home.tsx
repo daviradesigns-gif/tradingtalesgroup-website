@@ -93,7 +93,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="manifesto-section">
+        <section className="manifesto-section" style={{backgroundColor: '#00ff00'}}>
           <div className="page-shell manifesto-grid">
             <div className="manifesto-label">Our point of view</div>
             <div>

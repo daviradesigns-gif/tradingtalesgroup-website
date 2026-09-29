@@ -14,9 +14,9 @@ import {
   X,
 } from "lucide-react";
 
-const heroImage = "/manus-storage/ttg-hero-bg_124d897b.png";
-const logoImage = "/manus-storage/ttg-logo-supplied_c878a093.webp";
-const communityImage = "/manus-storage/ttg-community-section_f378da59.png";
+const heroImage = "/assets/ttg-hero-bg_124d897b.webp";
+const logoImage = "/assets/ttg-logo-supplied_c878a093.webp";
+const communityImage = "/assets/ttg-community-section_f378da59.webp";
 
 const offerings = [
   {

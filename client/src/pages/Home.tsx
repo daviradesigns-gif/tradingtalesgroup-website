@@ -72,7 +72,7 @@ export default function Home() {
           <div className="hero-grain" />
           <div className="hero-content page-shell">
             <div className="eyebrow light"><span /> Trading Tales Group</div>
-            <h1>Behind every<br /><em>successful trade</em><br />is a story.</h1>
+            <h1>Behind every<br /><em style={{ color: "#00ff00" }}>successful trade</em><br />is a story.</h1>
             <div className="hero-bottom">
               <p>A field guide, a thinking room, and a community for traders who are serious about the work behind the chart.</p>
               <a className="circle-link" href="#about" aria-label="Explore Trading Tales Group"><ArrowDownRight size={25} /></a>
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="page-shell manifesto-grid">
             <div className="manifesto-label">Our point of view</div>
             <div>
-              <Quote className="quote-mark" size={42} strokeWidth={1.5} />
+              <Quote className="quote-mark" size={42} strokeWidth={1.5} style={{ backgroundColor: "#00ff00" }} />
               <p className="manifesto-quote">We believe the best traders are not the ones who chase certainty. They are the ones who build the confidence to keep learning.</p>
               <div className="manifesto-signature"><span className="signature-line" /> Trading Tales Group</div>
             </div>
@@ -107,13 +107,13 @@ export default function Home() {
         <section className="offerings-section page-shell" id="offerings">
           <div className="section-kicker">02 — The method</div>
           <div className="offerings-header">
-            <h2>Learn with intent.<br /><span>Trade with perspective.</span></h2>
+            <h2>Learn with intent.<br /><span style={{ color: "#00ff00" }}>Trade with perspective.</span></h2>
             <p>From first principles to advanced conversations, every part of Trading Tales is designed to turn information into understanding.</p>
           </div>
           <div className="offering-list">
             {offerings.map((item) => (
               <article className="offering-row" key={item.number}>
-                <span className="offering-number">{item.number}</span>
+                <span className="offering-number" style={{ color: "#00ff00" }}>{item.number}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
                 <ArrowUpRight className="offering-arrow" size={23} />

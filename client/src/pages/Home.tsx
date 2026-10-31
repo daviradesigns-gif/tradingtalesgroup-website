@@ -1,5 +1,5 @@
 // TTG Design Philosophy: premium editorial composition, left-aligned hierarchy, high contrast, and restrained green accents.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -42,26 +42,61 @@ const values = [
   { label: "Simplicity", detail: "Less noise. Better insights. More confident decisions." },
 ];
 
+const navigationSections = ["about", "offerings", "values", "contact"];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    const revealObserver = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")),
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    const sectionObserver = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id)),
+      { threshold: 0.15, rootMargin: "-18% 0px -62% 0px" },
+    );
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    document.querySelectorAll(".reveal-section").forEach((section) => revealObserver.observe(section));
+    navigationSections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
+      revealObserver.disconnect();
+      sectionObserver.disconnect();
+    };
+  }, []);
+
   return (
     <div className="ttg-site">
-      <header className="site-header">
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand-lockup" href="#top" aria-label="Trading Tales Group home" onClick={closeMenu}>
           <img src={logoImage} alt="Trading Tales Group" width="2048" height="976" fetchPriority="high" decoding="async" />
         </a>
-        <nav className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#offerings" onClick={closeMenu}>What we do</a>
-          <a href="#values" onClick={closeMenu}>Our values</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+        <nav id="site-navigation" className={`site-nav ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
+          <a className={activeSection === "about" ? "is-active" : ""} href="#about" onClick={closeMenu}>About</a>
+          <a className={activeSection === "offerings" ? "is-active" : ""} href="#offerings" onClick={closeMenu}>What we do</a>
+          <a className={activeSection === "values" ? "is-active" : ""} href="#values" onClick={closeMenu}>Our values</a>
+          <a className={activeSection === "contact" ? "is-active" : ""} href="#contact" onClick={closeMenu}>Contact</a>
           <a className="nav-cta" href="#contact" onClick={closeMenu}>Join the community <ArrowUpRight size={15} /></a>
         </nav>
-        <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="menu-toggle" type="button" aria-controls="site-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </header>
@@ -81,7 +116,7 @@ export default function Home() {
           <div className="hero-index" aria-hidden="true"><span>FIELD NOTE</span> 01 <span>/ 04</span></div>
         </section>
 
-        <section className="intro-section page-shell" id="about">
+        <section className="intro-section page-shell reveal-section" id="about">
           <div className="section-kicker">01 — The story</div>
           <div className="intro-grid">
             <h2>The market is full of noise. We make the signal easier to hear.</h2>
@@ -104,7 +139,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="offerings-section page-shell" id="offerings">
+        <section className="offerings-section page-shell reveal-section" id="offerings">
           <div className="section-kicker">02 — The method</div>
           <div className="offerings-header">
             <h2>Learn with intent.<br /><span style={{ color: "#00ff00" }}>Trade with perspective.</span></h2>
@@ -134,7 +169,7 @@ export default function Home() {
           <div className="community-caption">The journey is yours.<br />The perspective is shared.</div>
         </section>
 
-        <section className="values-section page-shell" id="values">
+        <section className="values-section page-shell reveal-section" id="values">
           <div className="section-kicker">04 — The principles</div>
           <div className="values-layout">
             <div>

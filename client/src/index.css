@@ -24,15 +24,20 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 
 .ttg-site { overflow: hidden; }
 .page-shell { width: min(1200px, calc(100% - 96px)); margin: 0 auto; }
-.site-header { position: absolute; z-index: 10; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; width: min(1200px, calc(100% - 48px)); height: 80px; margin: 0 auto; padding: 0 24px; color: white; }
+.site-header { position: absolute; z-index: 10; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; width: min(1200px, calc(100% - 48px)); height: 80px; margin: 0 auto; padding: 0 24px; color: white; transition: background .24s ease, box-shadow .24s ease, color .24s ease; }
+.site-header.is-scrolled { position: fixed; width: 100%; max-width: none; padding-right: max(24px, calc((100% - 1200px) / 2 + 24px)); padding-left: max(24px, calc((100% - 1200px) / 2 + 24px)); background: rgba(15,17,14,.88); box-shadow: 0 12px 30px rgba(0,0,0,.16); backdrop-filter: blur(16px); }
 .brand-lockup { display: flex; align-items: center; flex: 0 1 auto; min-width: 0; height: 100%; line-height: 0; }
 .brand-lockup img { display: block; width: 260px; height: 80px; max-width: 100%; object-fit: contain; object-position: left center; filter: none; }
 .site-nav { display: flex; align-items: center; gap: 30px; font-size: 13px; font-weight: 600; letter-spacing: .02em; }
-.site-nav a { opacity: .8; transition: opacity .18s ease, color .18s ease; }
+.site-nav a { position: relative; opacity: .8; transition: opacity .18s ease, color .18s ease; }
 .site-nav a:hover { opacity: 1; color: var(--ttg-green-bright); }
+.site-nav a:not(.nav-cta)::after { content: ''; position: absolute; right: 0; bottom: -8px; left: 0; height: 2px; background: var(--ttg-green-bright); transform: scaleX(0); transform-origin: center; transition: transform .18s ease; }
+.site-nav a:not(.nav-cta):hover::after, .site-nav a:not(.nav-cta).is-active::after { transform: scaleX(1); }
+.site-nav a.is-active { color: var(--ttg-green-bright); opacity: 1; }
 .site-nav .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 17px; border: 1px solid rgba(255,255,255,.45); color: white; opacity: 1; transition: background .18s ease, border-color .18s ease, color .18s ease; }
 .site-nav .nav-cta:hover { background: var(--ttg-green); border-color: var(--ttg-green); color: white; }
-.menu-toggle { display: none; flex-shrink: 0; border: 0; background: transparent; color: white; padding: 8px; }
+.menu-toggle { display: none; flex-shrink: 0; border: 0; background: transparent; color: white; padding: 8px; transition: color .18s ease, transform .18s ease; }
+.menu-toggle:hover { color: var(--ttg-green-bright); transform: rotate(4deg); }
 
 .hero-section { position: relative; min-height: 780px; display: flex; align-items: center; color: white; background: var(--ttg-black); isolation: isolate; }
 .hero-backdrop { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .78; }
@@ -53,6 +58,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .hero-index span { color: rgba(255,255,255,.42); font-size: 10px; letter-spacing: .14em; }
 
 .intro-section { padding-top: 150px; padding-bottom: 145px; }
+.reveal-section { opacity: 0; transform: translateY(24px); transition: opacity .62s cubic-bezier(.23,1,.32,1), transform .62s cubic-bezier(.23,1,.32,1); }
+.reveal-section.is-visible { opacity: 1; transform: none; }
 .section-kicker { margin-bottom: 46px; color: var(--ttg-green); text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 700; }
 .intro-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 11%; align-items: start; }
 h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-serif; letter-spacing: -.045em; }
@@ -145,6 +152,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 @media (max-width: 1024px) {
   .page-shell, .site-header { width: min(100% - 64px, 900px); }
   .site-header { padding: 0 24px; }
+  .site-header.is-scrolled { padding-right: 24px; padding-left: 24px; }
   .brand-lockup img { width: 220px; height: 80px; }
   .intro-grid, .manifesto-grid, .values-layout, .cta-grid { gap: 7%; }
   .hero-content h1 { max-width: 650px; }
@@ -153,6 +161,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 @media (max-width: 850px) {
   .page-shell, .site-header { width: min(100% - 44px, 680px); }
   .site-header { height: 72px; padding: 0 16px; }
+  .site-header.is-scrolled { padding-right: 16px; padding-left: 16px; }
   .brand-lockup img { width: 220px; height: 72px; }
   .menu-toggle { display: block; }
   .site-nav { position: absolute; top: 82px; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 9px; background: var(--ttg-black); border: 1px solid rgba(255,255,255,.14); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
@@ -180,6 +189,7 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 @media (max-width: 520px) {
   .page-shell, .site-header { width: calc(100% - 36px); }
   .site-header { height: 64px; padding: 0 12px; }
+  .site-header.is-scrolled { padding-right: 12px; padding-left: 12px; }
   .hero-section { min-height: 680px; }
   .brand-lockup { max-width: calc(100% - 52px); }
   .brand-lockup img { width: 180px; height: 64px; }
@@ -203,5 +213,6 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 66px)/.97 'League Spartan', sans-seri
 
 @media (prefers-reduced-motion: reduce) {
   .success-state { animation: none; }
+  .reveal-section { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
